@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"net/http"
+	"runtime"
 	"time"
 
 	"golang.org/x/net/html"
@@ -52,6 +53,7 @@ func Crawl(url string, depth int) {
 }
 
 func main() {
+	runtime.GOMAXPROCS(runtime.NumCPU())
 	fetched = make(map[string]bool)
 	now := time.Now()
 	Crawl("http://andcloud.io", 2)

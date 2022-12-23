@@ -13,7 +13,7 @@ func main() {
 	var wg sync.WaitGroup
 
 	incr := func(wg *sync.WaitGroup) {
-		var i int
+		var i int // local variable i
 		wg.Add(1)
 		go func() {
 			defer wg.Done()
@@ -21,7 +21,7 @@ func main() {
 			fmt.Printf("value of i: %v\n", i)
 		}()
 		fmt.Println("return from function")
-		return
+		return // here the function is retruning still the reference to the variable i is being held
 	}
 
 	incr(&wg)

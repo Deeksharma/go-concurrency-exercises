@@ -71,3 +71,31 @@ func visit(links []string, n *html.Node) []string {
 	}
 	return links
 }
+
+/*
+In the crawl function, it is calling function find links and passing it an url.
+
+And the find links function, we do a http get on the url, we check if the status is okay, if not,
+
+we return an error status.
+
+We do a http parse on the response body.
+
+And we pass the html document that we get to the visit function.
+
+in the visit function, we find the links in the document.
+
+And we create a slice of the links.
+
+And here we are returning the slice of the urls.
+
+We come back to the crawl function.
+
+We receive the slice of the urls.
+
+We print the url, which we currently crawled.
+
+And we are maintaining a map of the urls, so that we don't crawl the same url again.
+
+We range over the urls and we recursively call the crawl function on each url till the specified depth.
+*/
